@@ -1,7 +1,7 @@
 #include <iostream>
 
-#ifndef CPP6_DRZEWO_H
-#define CPP6_DRZEWO_H
+#ifndef CPP6_H
+#define CPP6_H
 
 class Animal{
     std::string species;
@@ -19,15 +19,15 @@ public:
 
     bool operator<(const Animal &d) const;
     bool operator==(const Animal &d) const;
-    std::string get_key() const;
-    std::string get_spiecies() const { return species; };
-    std::string get_name() const { return name; };
-    int get_age() const { return age; };
-    std::string animal_to_string() const;
-    void increase_age(int i) { age += i; };
+    std::string getKey() const;
+    std::string getSpiecies() const { return species; };
+    std::string getName() const { return name; };
+    int getAge() const { return age; };
+    std::string animalToString() const;
+    void increaseAge(int i) { age += i; };
 
 };
 
 
 
-#endif //CPP6_DRZEWO_H
+#endif //CPP6_H

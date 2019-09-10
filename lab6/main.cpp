@@ -8,90 +8,91 @@
 using namespace std;
 
 
-Animal rand_animal(){
+Animal randAnimal(){
     return Animal();
 }
 
-void print_vec(const vector<Animal> vec){
+void printVec(const vector<Animal> vec){
     for(auto it = vec.begin(); it != vec.end(); it++){
-        cout << (*it).animal_to_string() << endl;
+        cout << (*it).animalToString() << endl;
     }
 }
 
 
-void increase_age(Animal &d){
-    d.increase_age(1);
+void increaseAge(Animal &d){
+    d.increaseAge(1);
 }
 
-bool to_remove(const Animal &d){
-    return d.get_age() > 10;
+bool toRemove(const Animal &d){
+    return d.getAge() > 10;
 }
 
-bool larger_than(const Animal &d1,const Animal &d2){
-    return d1.get_age() < d2.get_age();
+bool largerThan(const Animal &d1, const Animal &d2){
+    return d1.getAge() < d2.getAge();
 }
 
 int main() {
 
-
     cout << "--- Vector ---" << endl;
 
-    vector<Animal> animal_vec;
+    vector<Animal> animalVec;
     for(int i = 0; i < 15; i++){
-        animal_vec.push_back(rand_animal());
+        animalVec.push_back(randAnimal());
     }
 
-    print_vec(animal_vec);
+    printVec(animalVec);
 
     cout << endl << "--- Set ---" << endl;
     cout << "Duplicates: " << endl;
-    set<Animal> animal_set;
+    set<Animal> animalSet;
     pair<set<Animal>::iterator,bool> ret;
 
-    for(auto it = animal_vec.begin(); it != animal_vec.end(); it++){
-        ret = animal_set.insert(*it);
+    for(auto it = animalVec.begin(); it != animalVec.end(); it++){
+        ret = animalSet.insert(*it);
         if(ret.second == false){
-            cout << (*it).animal_to_string() << endl;
+            cout << (*it).animalToString() << endl;
         }
     }
 
     cout << endl << "Set: " << endl;
-    for(auto it = animal_set.begin(); it != animal_set.end(); it++){
-        cout << (*it).animal_to_string() << endl;
+    for(auto it = animalSet.begin(); it != animalSet.end(); it++){
+        cout << (*it).animalToString() << endl;
     }
 
     cout << endl << "--- Map ---" << endl;
-    map<string, Animal> animal_map;
+    map<string, Animal> animalMap;
     for(int i = 0; i < 15; i++){
         Animal d = Animal();
-        animal_map.insert(pair<string, Animal>(d.get_key(),d));
+        animalMap.insert(pair<string, Animal>(d.getKey(),d));
     }
-    for(auto it = animal_map.begin(); it != animal_map.end(); it++){
-        cout << "[" << (*it).first << "] " << (*it).second.animal_to_string() << endl;
+    for(auto it = animalMap.begin(); it != animalMap.end(); it++){
+        cout << "[" << (*it).first << "] " << (*it).second.animalToString() << endl;
     }
 
 
-    vector<Animal> animal_vec1(15);
-    generate(animal_vec1.begin(), animal_vec1.end(), rand_animal);
+    vector<Animal> animalVec1(15);
+    generate(animalVec1.begin(), animalVec1.end(), randAnimal);
 
     cout << endl << "--- <algorithm> ---"  << endl;
-    print_vec(animal_vec1);
+    printVec(animalVec1);
 
-    cout << endl << "max_element: " << max_element(animal_vec1.begin(), animal_vec1.end(), larger_than)->animal_to_string() << endl;
+    cout << endl << "max_element: " << max_element(animalVec1.begin(), animalVec1.end(),
+                                                   largerThan)->animalToString() << endl;
 
 
-    string selected_type;
+    string selectedType;
     cout << "Enter species: ";
-    cin >> selected_type;
-    cout << "count_if " << selected_type << ": " << count_if(animal_vec1.begin(), animal_vec1.end(), [selected_type](Animal a){return a.get_spiecies() == selected_type;}) << endl;
+    cin >> selectedType;
+    cout << "count_if " << selectedType << ": " << count_if(animalVec1.begin(), animalVec1.end(), [selectedType](Animal a){return
+            a.getSpiecies() == selectedType;}) << endl;
 
     cout << endl << "for_each: " << endl;
-    for_each(animal_vec1.begin(), animal_vec1.end(), increase_age);
-    print_vec(animal_vec1);
+    for_each(animalVec1.begin(), animalVec1.end(), increaseAge);
+    printVec(animalVec1);
 
     cout << endl << "remove_if: " << endl;
-    animal_vec1.erase(remove_if(animal_vec1.begin(), animal_vec1.end(), to_remove), animal_vec1.end());
-    print_vec(animal_vec1);
+    animalVec1.erase(remove_if(animalVec1.begin(), animalVec1.end(), toRemove), animalVec1.end());
+    printVec(animalVec1);
 
     return 0;
 }

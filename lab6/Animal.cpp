@@ -3,17 +3,17 @@
 using namespace std;
 
 bool Animal::operator<(const Animal &d) const{
-    return this->get_key() < d.get_key();
+    return this->getKey() < d.getKey();
 }
 
 bool Animal::operator==(const Animal &d) const{
-    return this->get_key() == d.get_key();
+    return this->getKey() == d.getKey();
 }
 
-std::string Animal::get_key() const {
+std::string Animal::getKey() const {
     return species + name;
 }
 
-std::string Animal::animal_to_string() const {
+std::string Animal::animalToString() const {
     return species + ", " + name + ", age: " + to_string(age);
 }

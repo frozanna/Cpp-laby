@@ -14,37 +14,37 @@ int main() {
     Pojazd p2 = Pojazd("Opel",5000,120.00);
     Pojazd p3 = Pojazd("Kia",2500,1230.00);
     Pojazd p4 = Pojazd("Ford",0,120.00);
-    komis.add_pojazd(p1);
-    komis.add_pojazd(p2);
-    komis.add_pojazd(p3);
+    komis.addPojazd(p1);
+    komis.addPojazd(p2);
+    komis.addPojazd(p3);
     try {
-        komis.add_pojazd(p4);
+        komis.addPojazd(p4);
     } catch(std::string e) {
         cout<<"Exception: " << e << endl;
     }
     Komis komis1(komis);
 
     cout << endl <<"Kontruktor kopiujacy" << endl;
-    cout << "Ilosc aut w komis: " << komis.get_licznik() << endl;
-    cout << "Ilosc aut w komis1: " << komis1.get_licznik() << endl;
+    cout << "Ilosc aut w komis: " << komis.getLicznik() << endl;
+    cout << "Ilosc aut w komis1: " << komis1.getLicznik() << endl;
 
     Komis komis2(std::move(komis));
     cout << endl <<"Kontruktor przenoszacy" << endl;
-    cout << "Ilosc aut w komis: " << komis.get_licznik() << endl;
-    cout << "Ilosc aut w komis2: " << komis2.get_licznik() << endl;
+    cout << "Ilosc aut w komis: " << komis.getLicznik() << endl;
+    cout << "Ilosc aut w komis2: " << komis2.getLicznik() << endl;
 
     komis = Komis();
-    komis.add_pojazd(p4);
+    komis.addPojazd(p4);
 
     komis1 = komis;
     cout << endl << "Kopiowanie" << endl;
-    cout << "Ilosc aut w komis: " << komis.get_licznik() << endl;
-    cout << "Ilosc aut w komis1: " << komis1.get_licznik() << endl;
+    cout << "Ilosc aut w komis: " << komis.getLicznik() << endl;
+    cout << "Ilosc aut w komis1: " << komis1.getLicznik() << endl;
 
     komis1 = std::move(komis);
     cout << endl << "Przenoszenie" << endl;
-    cout << "Ilosc aut w komis: " << komis.get_licznik() << endl;
-    cout << "Ilosc aut w komis1: " << komis1.get_licznik() << endl;
+    cout << "Ilosc aut w komis: " << komis.getLicznik() << endl;
+    cout << "Ilosc aut w komis1: " << komis1.getLicznik() << endl;
 
 
     Komis *komis_del = new Komis();

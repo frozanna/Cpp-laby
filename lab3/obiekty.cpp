@@ -3,14 +3,14 @@
 
 using namespace std;
 
-Komis::Komis(int rozmiar_arg){
-    if(rozmiar_arg <= 0){
+Komis::Komis(int rozmiar_){
+    if(rozmiar_ <= 0){
         string exception = "Size must be greater than 0.\n";
         throw exception;
     }
-    rozmiar = rozmiar_arg;
+    rozmiar = rozmiar_;
     licznik = 0;
-    pojazdy = new Pojazd[rozmiar_arg];
+    pojazdy = new Pojazd[rozmiar_];
 }
 
 Komis::Komis(const Komis &zrodlo) {
@@ -53,7 +53,7 @@ Komis &Komis::operator=(Komis &&zrodlo) {
     return *this;
 }
 
-void Komis::add_pojazd(const Pojazd pojazd) {
+void Komis::addPojazd(const Pojazd pojazd) {
     if(licznik >= rozmiar){
         string exception = "Not more place in array.\n";
         throw exception;
